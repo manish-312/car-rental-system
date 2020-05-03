@@ -25,7 +25,7 @@ module.exports = {
             });
             req.logIn(user, (err, user) => {
                 if (err) {
-                    res.locals.globalError = err;                //създаваме res.locals променлива, която идва от express и е достъпна навсякъде, можем да си я извикваме полсле през handlebars във темплейта.
+                    res.locals.globalError = err;                //res.locals 
                     res.render('users/register', user);
                 } else {
                     res.redirect('/');
@@ -58,7 +58,7 @@ module.exports = {
                 errorHandler('Invalid user data');
                 return;
             }
-            req.logIn(user, (err, user) => {     //req.logIn идава от passport
+            req.logIn(user, (err, user) => {     //req.logIn passport
                 if (err) {
                     errorHandler(err);
                 } else {
