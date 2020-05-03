@@ -11,9 +11,9 @@ module.exports = app => {
         extname: '.hbs'
     }));
 
-    app.use(cookieParser());                           //минавайки от тук ако има логнат user, се закача цялата информация на usera за req
+    app.use(cookieParser());                           
     app.use(bodyParser.urlencoded({extended: true}));
-    app.use(session({                               //при генериране на сесия слага парола(подсигурява, че само сесии, кото са генерирани от нашия сървар са валидни)
+    app.use(session({                              
         secret: '123456',
         resave: false,
         saveUninitialized: false
@@ -23,7 +23,7 @@ module.exports = app => {
 
     app.use((req, res, next) => {
         if (req.user) {
-            res.locals.currentUser = req.user;    //създаваме res.locals променлива (currentUser), която идва от express и е достъпна навсякъде, можем да си я извикваме полсле през handlebars във темплейта.
+            res.locals.currentUser = req.user;    
         }
         next();
     });
