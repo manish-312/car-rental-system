@@ -5,7 +5,7 @@ const RentedCarInfo = require('mongoose').model('RentedCarInfo')
 module.exports = {
     viewDetails: (req, res) => {
 
-        //взимаме от URL-а ид-то на избраната кола "carDetails/59e7aeec76630b07606369ac" като в routs съм му задал път "/carDetails/:id"
+        
         let id = req.params.id
         Car.findById(id).then(foundCar => {
             res.render('carDetails', { foundCar })
@@ -13,7 +13,7 @@ module.exports = {
     },
     takeCar: (req, res) => {
         let id = req.body.carId
-        let userId = req.user._id   //req.user взима логнатия user от passport
+        let userId = req.user._id   //req.user  user passport
         let RentedCarInfoObj = {}   
 
         Car.findById(id).then(foundCar => {
