@@ -2,7 +2,7 @@ const passport = require('passport');
 const LocalPassport = require('passport-local');
 const User = require('mongoose').model('User');
 
-module.exports = () => {                                                  //проверява по подадени username и password, дали съществува дадения потребител
+module.exports = () => {                                                  // username и password
     passport.use(new LocalPassport((username, password, done) => {
         User.findOne({ username: username }).then(user => {
             if (!user) return done(null, false);
@@ -11,11 +11,11 @@ module.exports = () => {                                                  //пр
         });
     }));
 
-    passport.serializeUser((user, done) => {                              //връща ID по подаден user
+    passport.serializeUser((user, done) => {                              //ID по user
         if (user) return done(null, user._id);
     });
 
-    passport.deserializeUser((id, done) => {                             //връща user по подадено ID
+    passport.deserializeUser((id, done) => {                             // user по ID
         User.findById(id).then(user => {
             if (!user) return done(null, false);
             return done(null, user);        
