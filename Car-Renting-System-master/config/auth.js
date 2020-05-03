@@ -1,12 +1,12 @@
 module.exports = {
     isAuthed: (req, res, next) => {
-        if (req.isAuthenticated()) {         //функция на passport проверява дали има потребител в сесията
+        if (req.isAuthenticated()) {         
             next();
         } else {
             res.redirect('/login');
         }
     },
-    hasRole: (role) => (req, res, next) => {      //проверяваме дали има дадена roles в логнатия потребител
+    hasRole: (role) => (req, res, next) => {      
         if (req.isAuthenticated() &&
             req.user.roles.indexOf(role) > -1) {
             next();
