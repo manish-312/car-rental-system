@@ -10,7 +10,7 @@ module.exports = config => {
         useMongoClient: true
     });       
     const db = mongoose.connection;
-    db.once('open', err => {                //.once - захващаме се за евента, но еднократно
+    db.once('open', err => {                
         if (err) throw err;
         User.seedAdminUser().then(() => {
             console.log('Database ready');                
