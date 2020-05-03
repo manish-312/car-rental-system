@@ -43,7 +43,7 @@
             {{#if currentUser}}
                 <span class="navbar-text"> 
                     <span>|    Welcome, {{currentUser.username}}    |</span>
-                    <!-- правим logout чрез пост заявка, за да не влиза в back(history) -->
+                    <!--  logout back(history) -->
                     <form id="logout-form" action="/logout" method="post"></form>
                     <a id="logout" class="nav-link" href="javascript:document.getElementById('logout-form').submit()">Logout</a>
                 </span>
