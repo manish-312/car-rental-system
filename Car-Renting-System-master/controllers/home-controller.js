@@ -9,12 +9,7 @@ module.exports = {
         console.log(req.query)
         let prevPage = page - 1
         let nextPage = page + 1
-        /*зареждаме всички коли
-        .взомаме само тези на които проартито  ('isRendet') е false
-        .сортираме
-        .скипваме коли в зависимост на коя страница сме(взимаме я от query стринга)
-        .ломит
-        */
+        
         Car.find({}).where('isRendet').equals(false).sort({ year: -1 }).skip(page * 5).limit(5).then(allCar => {
 
             if (prevPage < 0) prevPage = 0
